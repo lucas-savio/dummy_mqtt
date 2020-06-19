@@ -21,14 +21,6 @@ create table Eletricity_Data (
   KWh text
 );
 
-drop table if exists Consumption_Fund ;
-create table Consumption_Fund (
-  id integer primary key autoincrement,
-  SensorID text,
-  Date_n_Time text,
-  Temperature text
-)
-
 drop table if exists Water_Data ;
 create table Water_Data (
   id integer primary key autoincrement,

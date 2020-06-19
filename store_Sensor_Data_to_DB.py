@@ -37,10 +37,6 @@ class DatabaseManager():
 
 # Function to save Temperature to DB Table
 def Eletricity_Data_Handler(jsonData):
-""" 	#Pull from DB Table
-	dbObj = DatabaseManager()
-	dbObj.read
- """
 	#Parse Data 
 	json_Dict = json.loads(jsonData)
 	SensorID = json_Dict['Sensor_ID']
@@ -60,11 +56,11 @@ def Water_Data_Handler(jsonData):
 	json_Dict = json.loads(jsonData)
 	SensorID = json_Dict['Sensor_ID']
 	Data_and_Time = json_Dict['Date']
-	Humidity = json_Dict['m3']
+	m3 = json_Dict['m3']
 	
 	#Push into DB Table
 	dbObj = DatabaseManager()
-	dbObj.add_del_update_db_record("insert into DHT22_Humidity_Data (SensorID, Date_n_Time, m3) values (?,?,?)",[SensorID, Data_and_Time, m3])
+	dbObj.add_del_update_db_record("insert into Water_Data (SensorID, Date_n_Time, m3) values (?,?,?)",[SensorID, Data_and_Time, m3])
 	del dbObj
 	print "Inserted Water Data into Database."
 	print ""
@@ -75,8 +71,8 @@ def Water_Data_Handler(jsonData):
 
 def sensor_Data_Handler(Topic, jsonData):
 	if Topic == "Realty/00a-4erT-wTy/Eletricity":
-		DHT22_Eletricity_Data_Handler(jsonData)
-	elif Topic == "Home/00a-4erT-wTy/Water":
-		DHT22_Water_Data_Handler(jsonData)	
+		Eletricity_Data_Handler(jsonData)
+	elif Topic == "Realty/00a-4erT-wTy/Water":
+		Water_Data_Handler(jsonData)	
 
 #===============================================================
