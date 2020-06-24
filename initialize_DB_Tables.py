@@ -21,6 +21,13 @@ create table Eletricity_Data (
   KWh text
 );
 
+drop table if exists Eletricity_Consumption_Data;
+create table Eletricity_Consumption_Data (
+  wattmeterId text,
+  lastRecord text,
+  consumption text
+);
+
 drop table if exists Water_Data ;
 create table Water_Data (
   id integer primary key autoincrement,
@@ -28,6 +35,13 @@ create table Water_Data (
   Date_n_Time text,
   m3 text
 );
+
+drop table if exists Water_Consumption_Data;
+create table Water_Consumption_Data (
+  hydrometerId text,
+  lastRecord text,
+  consumption text
+)
 """
 
 #Connect or Create DB File
